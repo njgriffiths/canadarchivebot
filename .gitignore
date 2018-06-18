@@ -1,0 +1,4 @@
+.DS_Store
+assets/*
+node_modules
+api-config.js

@@ -1,0 +1,21 @@
+{
+  "name": "canarc-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cron": "^1.3.0",
+    "fast-csv": "^2.4.1",
+    "flickr-sdk": "^3.7.0",
+    "tabletop": "^1.5.2",
+    "twit": "^2.2.10",
+    "twitter": "^1.7.1"
+  }
+}
