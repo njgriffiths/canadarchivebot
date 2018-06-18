@@ -1,0 +1,18 @@
+
+
+api-config-default.js
+• api keys, secrets, account ids, etc for twitter & flickr. 
+• NOTE: This file needs to be renamed to `api-config.js`
+
+app-config.js
+• various configuration options, including the URL for Google sheet containing photoset IDs & tags used as hashtags
+
+Instructions
+1. Clone the repo
+2. Run `npm install` to install the dependencies
+3. Run `npm start` to start up the bot
+
+How it works
+On launch, the bot downloads a json lookup table from a Google sheet that contains photoset IDs & tags used as hashtags in tweets. A cron task updates the lookup table daily.
+The bot pulls a random photoset first, then picks a random photo from the photoset. Image title is used for the tweet status, with hashtags added from the tags property of the lookup table.
+Tweets are scheduled via cron tasks.

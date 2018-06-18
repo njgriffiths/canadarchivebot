@@ -2,8 +2,8 @@ module.exports = {
 	
 	cron: {
 		random_image: '0 6,12,18 * * *', // run at 6am, noon & 6pm every day
-		random_image: '0 * * * *' // TESTING: run everyminute
-		// fetch_photosets: '0 24 * * *',
+		random_image: '0 * * * *', // TESTING: run every minute
+		fetch_photosets: '0 24 * * *'
 	},
 	image: {
 		dir: './assets', // directory to store temp image before posting
