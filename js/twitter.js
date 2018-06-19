@@ -30,8 +30,6 @@ var app = {
 				params.alt_text = {}
 				params.alt_text.text = params.status;
 
-				console.log('tpost: ', params)
-
 				// create a media post to be tweeted
 				T.post('media/metadata/create', params, function(err, data, response) {
 					if (err) {

@@ -24,7 +24,6 @@ var app = {
 		// split the tags string into an array, append the '#' and append to the image title
 		const tags = app.cache.hashtags[0].split(',');
 		
-		console.log(tags)
 		if (tags.length > 0 && tags[0] !== '') {
 			tags.forEach(d => {
 				title += ' #' + d.trim();
@@ -97,32 +96,10 @@ var app = {
 				res.text.pipe(fs.createWriteStream(filepath));
 			});
 	},
-	// getRandomImage: (opts) => {
-	// 	// fetch a random image
-	// 	flic.getPublicPhoto(opts)
-	// 		.then((res) => {
-	// 			const photo = res.body.photos.photo[0];
-	// 			app.cache.status = photo.title;
-	// 			console.log(photo.id)
-				
-	// 			// download the image
-	// 			flic.getPhoto(photo.id)
-	// 				.then((res) => {
-	// 					app.downloadImage(res);
-	// 				})
-	// 				.catch((err) => {
-	// 					throw new Error(err);
-	// 				})
-	// 		})
-	// 		.catch((err) => {
-	// 			throw new Error(err);
-	// 		});	
-	// },
 	getRandomItem: (array) => {
 		return array[Math.floor(Math.random() * array.length)];
 	},
 	getRandomPhotosetImage: (ps_id, nsid) => {
-		console.log('Getting random image from the photoset...')
 		flic.getPhotosetImages(ps_id, nsid)
 			.then(res => {
 				// grab a random photo from the photoset array
