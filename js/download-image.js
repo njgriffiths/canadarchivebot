@@ -20,7 +20,10 @@ async function downloadImage(url, filepath) {
 	// return a promise and resolve when download finishes
 	return new Promise((resolve, reject) => {
 		response.data.on('end', () => {
-			resolve();
+			// shouldn't need this setTimeout but otherwise image sometimes doesn't fully download before the upload occurs...
+			setTimeout(function() {
+				resolve();
+			}, 1000);
 		});
 
 		response.data.on('error', () => {
