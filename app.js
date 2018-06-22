@@ -14,7 +14,7 @@ const downloadImage = require('./js/download-image');
 
 var app = {
 	init: () => {
-		console.log("Starting up the bot..." + new Date());
+		console.log('Starting up the bot... ' + new Date());
 		// setup a cache
 		app.cache = {};
 		app.cache.noTagReplies = twitterReplies.no_tags;
@@ -35,19 +35,20 @@ var app = {
 		// // log errors
 		// stream.on('error', app.logTwitterError);
 	},
-	appendHashtags: (photoset_id, title) => {
+	appendHashtags: (title) => {
+		let hashString = '';
 		// split the tags string into an array, append the '#' and append to the image title
 		const tags = app.cache.hashtags[0].split(',');
 		
 		if (tags.length > 0 && tags[0] !== '') {
 			tags.forEach(d => {
-				title += ' #' + d.trim();
-			});	
+				hashString += ' #' + d.trim();
+			});
 		}
 
-		// cache for later
-		app.cache.status = title;
+		return hashString;
 	},
+	// redo this as promise/await
 	cacheLookupTable: (data) => {
 		// cache the lookup table
 		app.lookup = data;
@@ -135,8 +136,11 @@ var app = {
 				// grab a random photo from the photoset array
 				const photo = app.getRandomItem(JSON.parse(res.text).photoset.photo);
 
-				// add hashtags to the title & cache for later use as twitter status
-				// app.appendHashtags(ps_id, photo.title);
+				// cache title for later use as twitter status
+				app.cache.status = photo.title;
+
+				// add hashtags to the title & cache for later
+				// app.cache.status += app.appendHashtags(photo.title);
 
 				console.log(`Fetching photo ID: ${photo.id} from photoset ID: ${ps_id}`);
 
@@ -210,7 +214,6 @@ var app = {
 		// 
 		// params.url_params = contentApi.assignUrlParams(query, config.ap.url_params.replySortBy);
 
-		console.log(params)
 		//
 		// if (params.url_params.query !== undefined) {
 		// 	// constructURL
